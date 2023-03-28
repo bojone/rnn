@@ -1,6 +1,6 @@
 #! -*- coding: utf-8 -*-
 # 线性循环单元（Linear Recurrent Unit）
-# tensorflow 1.15 + bert4keras >= 0.11.4 测试通过
+# tensorflow 1.15 + bert4keras 0.11.4 测试通过
 
 from bert4keras.layers import *
 
@@ -42,7 +42,7 @@ class LRU(Layer):
             kernel_initializer=self.kernel_initializer
         )
 
-        def lru_initializer(shape, dtype=None):
+        def initializer(shape, dtype=None):
             r_min, r_max = 0.9, 0.999
             u1 = np.random.random(size=shape[1])
             u2 = np.random.random(size=shape[1])
@@ -54,9 +54,7 @@ class LRU(Layer):
             return np.array([nu_log, theta_log, gamma_log])
 
         self.params_log = self.add_weight(
-            name='params_log',
-            shape=(3, self.units),
-            initializer=lru_initializer
+            name='params_log', shape=(3, self.units), initializer=initializer
         )
 
     @recompute_grad
