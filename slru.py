@@ -2,6 +2,8 @@
 # 简化版线性循环单元（Simpler Linear Recurrent Unit）
 # tensorflow 1.15 + bert4keras 0.11.4 测试通过
 
+from bert4keras.layers import *
+
 
 class SLRU(Layer):
     """实数版线性循环单元
