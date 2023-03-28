@@ -1,5 +1,6 @@
 #! -*- coding: utf-8 -*-
 # RNN-α 模型实现
+# tensorflow 1.15 + bert4keras 0.11.4 测试通过
 
 from bert4keras.models import *
 from lru import LRU
