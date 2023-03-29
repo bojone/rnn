@@ -58,7 +58,7 @@ class RWKV(Layer):
         r, k = K.sigmoid(r), K.exp(k)
         kv = k * v
         u = K.concatenate([kv, k], axis=-1)
-        nu = K.repeat_elements(K.exp(self.nu_log), 2, 0)
+        nu = K.exp(K.concatenate([self.nu_log, self.nu_log], axis=0))
         gamma = K.exp(self.nu_log + self.gamma_log) - 1
 
         if self.unroll:
